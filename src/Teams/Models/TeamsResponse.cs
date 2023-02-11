@@ -1,8 +1,10 @@
+// using Newtonsoft.Json;
+
 using Newtonsoft.Json;
 
-namespace cbb_learn.Models;
+namespace cbb_learn.src.Teams.Models;
 
-public class Teams
+public class TeamsResponse
 {
     public int Count { get; set; }
     public int PageIndex { get; set; }

@@ -1,15 +1,20 @@
-namespace cbb_learn.Services;
+
+namespace cbb_learn.src.Teams.Services;
 
 public class TeamsService
 {
-    private readonly ILogger<TeamsService> _logger;
+    // private readonly ILogger<TeamsService> _logger;
 
     private static readonly HttpClient client = new HttpClient();
 
-    public TeamsService(ILogger<TeamsService> logger)
+    public TeamsService()
     {
-        _logger = logger;
+        // _logger = logger;
     }
+
+    // public TeamsService()
+    // {
+    // }
 
     public async Task<IEnumerable<int>> GetAllTeams()
     {
