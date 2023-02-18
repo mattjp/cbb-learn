@@ -12,11 +12,9 @@ public class TeamsService
 
     public TeamsService() { }
 
-    public async Task<IEnumerable<int>> GetAllTeams()
+    public async Task GetAllTeams()
     {
         Console.WriteLine("Fetching TeamIds...");
-
-        // string url = "http://sports.core.api.espn.com/v2/sports/basketball/leagues/mens-college-basketball/seasons/2022/types/2/groups/50/teams?lang=en&region=us&limit=400";
 
         string url = "http://sports.core.api.espn.com/v2/sports/basketball/leagues/mens-college-basketball/seasons/2022/types/2/groups/50/teams?lang=en&region=us&limit=400";
 
@@ -25,30 +23,19 @@ public class TeamsService
 
         string response = await client.GetStringAsync(url);
 
-        // Console.WriteLine(response);
-
         var teams = JsonConvert.DeserializeObject<TeamsResponse>(response, settings);
-
-
 
         if (teams == null)
         {
             Console.WriteLine("ESPN API response was null.");
-            return new List<int>();
+            return;
         }
 
         if (teams.Items == null)
         {
             Console.WriteLine("ESPN response contained null Items.");
-            return new List<int>();
+            return;
         }
-
-        // Console.WriteLine(teams);
-
-        // foreach (var item in teams.Items)
-        // {
-        //     Console.WriteLine($"-> {item.Ref}");
-        // }
 
         var teamDocuments = teams.Items.Select(item => 
         {
@@ -57,17 +44,10 @@ public class TeamsService
             return new TeamDocument(item.Ref.Substring(i, l));
         });
         
-
         using (var writer = new StreamWriter("../Data/teams.csv"))
         using (var csv = new CsvWriter(writer, CultureInfo.InvariantCulture))
         {
             csv.WriteRecords(teamDocuments);
         }
-
-
-
-        return new List<int>();
     }
-
-
 }
