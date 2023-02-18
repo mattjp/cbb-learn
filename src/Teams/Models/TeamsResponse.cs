@@ -16,5 +16,5 @@ public class TeamsResponse
 public class Item
 {
     [JsonProperty(PropertyName = "$ref")]
-    public string? Ref { get; set; }
+    public string Ref { get; set; } = string.Empty;
 }

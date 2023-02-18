@@ -18,10 +18,12 @@ public class Program
     //     _logger = logger;
     // }
 
-    public static void Main()
+    public static async Task<int> Main()
     {
         TeamsService teamsService = new TeamsService();
-        var teams = teamsService.GetAllTeams();
+        var teams = await teamsService.GetAllTeams();
+
+        return 0;
         // teamsService.WriteAllTeams();
 
         // string url = "http://sports.core.api.espn.com/" +
