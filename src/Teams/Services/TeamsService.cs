@@ -44,7 +44,7 @@ public class TeamsService
             return new TeamDocument(item.Ref.Substring(i, l));
         });
         
-        using (var writer = new StreamWriter("../Data/teams.csv"))
+        using (var writer = new StreamWriter("src/Data/teams.csv"))
         using (var csv = new CsvWriter(writer, CultureInfo.InvariantCulture))
         {
             csv.WriteRecords(teamDocuments);
