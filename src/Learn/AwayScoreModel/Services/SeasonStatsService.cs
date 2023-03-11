@@ -20,7 +20,7 @@ namespace AwayScoreModel.ConsoleApp
 
         public async Task<Dictionary<string, Dictionary<string, float>>> GetSeasonStats(string teamA, string teamB)
         {
-            Console.WriteLine($"Fetching season stats for teamA={teamA}, teamB={teamB}");
+            Console.WriteLine($"Fetching season stats for teamA={teamA}, teamB={teamB}...\n");
 
             JsonSerializerSettings settings = new JsonSerializerSettings();
             settings.MetadataPropertyHandling = MetadataPropertyHandling.Ignore;

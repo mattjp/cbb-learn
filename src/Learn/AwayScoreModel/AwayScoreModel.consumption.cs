@@ -665,7 +665,7 @@ namespace AwayScoreModel.ConsoleApp
 
         #endregion
 
-        private static string MLNetModelPath = Path.GetFullPath("AwayScoreModel.mlnet");
+        private static string MLNetModelPath = Path.GetFullPath("src/Learn/AwayScoreModel/AwayScoreModel.mlnet");
 
         public static readonly Lazy<PredictionEngine<ModelInput, ModelOutput>> PredictEngine = new Lazy<PredictionEngine<ModelInput, ModelOutput>>(() => CreatePredictEngine(), true);
 

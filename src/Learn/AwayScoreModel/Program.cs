@@ -16,24 +16,34 @@ namespace AwayScoreModel.ConsoleApp
     {
         public static async Task Main(string[] args)
         {
+            if (args.Length != 2)
+            {
+                Console.WriteLine("Please pass in exactly 2 teamIds.");
+                return;
+            }
+
+            string teamA = args[0];
+            string teamB = args[1];
+
             SeasonStatsService seasonStatsService = new SeasonStatsService();
-            var seasonStats = await seasonStatsService.GetSeasonStats("2", "5");
+            var seasonStats = await seasonStatsService.GetSeasonStats(teamA, teamB);
 
             var modelInputA = seasonStatsService.GetModelInput(seasonStats["B"], seasonStats["A"]);
             var modelInputB = seasonStatsService.GetModelInput(seasonStats["A"], seasonStats["B"]);
 
-            Console.WriteLine($"Predicting away points for teamId=2 against teamId=201\n");
+            Console.WriteLine($"Predicting away points for both teams.\n");
 
-            var predictionResultA = AwayScoreModel.Predict(modelInputA);
+            var predA = AwayScoreModel.Predict(modelInputA);
+            var predB = AwayScoreModel.Predict(modelInputB);
 
-            Console.WriteLine($"Predicted AwayPoints for teamId=2: {predictionResultA.Score}\n");
+            var scoreA = predA.Score;
+            var scoreB = predB.Score;
+            var scoreDiff = Math.Abs(scoreA - scoreB);
 
-            Console.WriteLine($"Predicting away points for teamId=201 against teamId=2\n");
-
-            var predictionResultB = AwayScoreModel.Predict(modelInputB);
-
-            Console.WriteLine($"Predicted AwayPoints for teamId=201: {predictionResultB.Score}\n");
-
+            Console.WriteLine($"=> Points:\n    {teamA}: {scoreA}\n    {teamB}: {scoreB}\n");
+            Console.WriteLine($"=> Point difference: {scoreDiff}\n");
+            Console.WriteLine($"=> Winner: {(scoreA > scoreB ? teamA : teamB)}\n");
+            Console.WriteLine($"=> Spread: {Math.Round(scoreDiff * 2, MidpointRounding.AwayFromZero) / 2}\n");
             Console.WriteLine("=============== End of process ===============");
         }
     }
