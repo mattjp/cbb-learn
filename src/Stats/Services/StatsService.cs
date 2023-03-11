@@ -41,56 +41,74 @@ public class StatsService
             gameDocs = gamesCsv.GetRecords<GameDocument>().ToList();
         }
 
-        foreach (var gameDoc in gameDocs.Take(2))
+        int processed = 0;
+        int errors = 0;
+
+        Console.WriteLine($"Attempting to process {gameDocs.Count} games.");
+
+        foreach (var gameDoc in gameDocs)
         {
             var statsDoc = new StatsDocument(gameDoc.Id, gameDoc.Home, gameDoc.Away);
 
-            // Console.WriteLine($"{gameDoc.Id}, {gameDoc.Home}, {gameDoc.Away}");
+            Console.WriteLine($"{gameDoc.Id}, {gameDoc.Home}, {gameDoc.Away}");
 
-            foreach (var teamId in new List<string> { gameDoc.Home, gameDoc.Away })
+            try
             {
-                string url = $"http://sports.core.api.espn.com/v2/sports/basketball/leagues/mens-college-basketball/events/{gameDoc.Id}/competitions/{gameDoc.Id}/competitors/{teamId}/statistics?lang=en&region=us";
-                string response = await client.GetStringAsync(url);
-
-                // Console.WriteLine($"response={response}");
-
-                var statsResponse = JsonConvert.DeserializeObject<StatsResponse>(response, settings);
-
-                foreach (var cat in statsResponse.Splits.Categories)
+                foreach (var teamId in new List<string> { gameDoc.Home, gameDoc.Away })
                 {
-                    foreach (var s in cat.Stats.Where(c =>
-                        !c.Name.StartsWith("avg")
-                        && !c.Name.StartsWith("total")
-                        && c.Name != "largestLead"
-                        && c.Name != "fantasyRating"))
-                    {
-                        string prefix = teamId == gameDoc.Home ? "home" : "away";
-                        string k = prefix + string.Concat(s.Name[0].ToString().ToUpper(), s.Name.AsSpan(1));
-                        double v = s.Value;
+                    string url = $"http://sports.core.api.espn.com/v2/sports/basketball/leagues/mens-college-basketball/events/{gameDoc.Id}/competitions/{gameDoc.Id}/competitors/{teamId}/statistics?lang=en&region=us";
+                    string response = await client.GetStringAsync(url);
 
-                        statsDoc.Stats.Add(k, v);
+                    var statsResponse = JsonConvert.DeserializeObject<StatsResponse>(response, settings);
+
+                    foreach (var cat in statsResponse.Splits.Categories)
+                    {
+                        foreach (var s in cat.Stats.Where(c =>
+                            !c.Name.StartsWith("avg")
+                            && !c.Name.StartsWith("total")
+                            && c.Name != "largestLead"
+                            && c.Name != "fantasyRating"))
+                        {
+                            string prefix = teamId == gameDoc.Home ? "home" : "away";
+                            string k = prefix + string.Concat(s.Name[0].ToString().ToUpper(), s.Name.AsSpan(1));
+                            double v = s.Value;
+
+                            statsDoc.Stats.Add(k, v);
+                        }
                     }
                 }
+
+                using (var writer = new StreamWriter("src/Data/stats.csv", true))
+                {
+                    var l = new List<double>();
+                    foreach (var col in StatsDocument.GetColumns())
+                    {
+                        if (statsDoc.Stats.ContainsKey(col))
+                        {
+                            l.Add(statsDoc.Stats[col]);
+                        }
+                        else
+                        {
+                            Console.WriteLine($"Could not find key={col} in docId={statsDoc.Id}");
+                            l.Add(0);
+                        }
+                    }
+
+                    writer.WriteLine(string.Join(',', l));
+                }
+
+                Console.WriteLine("Waiting for 1 second...");
+                System.Threading.Thread.Sleep(1000);
+                processed++;
             }
-
-            using (var writer = new StreamWriter("src/Data/stats.csv", true))
+            catch (Exception ex)
             {
-                var l = new List<double>();
-                foreach (var col in StatsDocument.GetColumns())
-                {
-                    if (statsDoc.Stats.ContainsKey(col))
-                    {
-                        l.Add(statsDoc.Stats[col]);
-                    }
-                    else
-                    {
-                        Console.WriteLine($"Could not find key={col} in docId={statsDoc.Id}");
-                        l.Add(0);
-                    }
-                }
-
-                writer.WriteLine(string.Join(',', l));
+                Console.WriteLine($"Encountered exception={ex.Message}");
+                errors++;
             }
         }
+
+        Console.WriteLine($"Processed {processed} games.\nEncountered {errors} errors");
+
     }
 }
