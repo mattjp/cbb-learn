@@ -37,13 +37,23 @@ public class TeamsService
             return;
         }
 
-        var teamDocuments = teams.Items.Select(item => 
+        var teamIds = teams.Items.Select(item =>
         {
             int i = item.Ref.LastIndexOf("/") + 1;
             int l = item.Ref.LastIndexOf("?") - i;
-            return new TeamDocument(item.Ref.Substring(i, l));
+            return item.Ref.Substring(i, l);
         });
-        
+
+
+
+        var teamDocuments = teamIds.Select(async teamId =>
+        {
+            string teamUrl = $"http://sports.core.api.espn.com/v2/sports/basketball/leagues/mens-college-basketball/seasons/2022/teams/{teamId}?lang=en&region=us";
+            string teamResponse = await client.GetStringAsync(teamUrl);
+            var teamDetail = JsonConvert.DeserializeObject<TeamDetailResponse>(teamResponse, settings);
+            return new TeamDocument(teamId, teamDetail.DisplayName);
+        }).Select(t => t.Result);
+
         using (var writer = new StreamWriter("src/Data/teams.csv"))
         using (var csv = new CsvWriter(writer, CultureInfo.InvariantCulture))
         {

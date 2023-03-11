@@ -1,11 +1,7 @@
-// using cbb_learn.src.Games.Models;
-// using cbb_learn.src.Stats.Models;
 using cbb_learn.src.Stats.Models;
-// using AwayScoreModel.ModelInput;
 using Newtonsoft.Json;
 using CsvHelper;
 using System.Globalization;
-// using System.Threading.Tasks;
 using System.Net.Http;
 using System;
 using System.Collections.Generic;
@@ -16,7 +12,6 @@ using System.Threading.Tasks;
 
 namespace AwayScoreModel.ConsoleApp
 {
-
     public class SeasonStatsService
     {
         private static readonly HttpClient client = new HttpClient();
