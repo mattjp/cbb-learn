@@ -15,4 +15,11 @@ public class GameDocument
     {
         Id = id;
     }
+
+    public GameDocument(string id, string home, string away)
+    {
+        Id = id;
+        Home = home;
+        Away = away;
+    }
 }
