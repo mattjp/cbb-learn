@@ -26,7 +26,7 @@ namespace AwayScoreModel.ConsoleApp
             // Create single instance of sample data from first line of dataset for model input
 
             SeasonStatsService seasonStatsService = new SeasonStatsService();
-            var seasonStats = await seasonStatsService.GetSeasonStats("2", "201");
+            var seasonStats = await seasonStatsService.GetSeasonStats("2", "5");
 
             // Console.WriteLine($"home: {seasonStats["home"]["GamesPlayed"]}");
             // Console.WriteLine($"away: {seasonStats["away"]["GamesPlayed"]}");
