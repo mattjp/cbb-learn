@@ -1,6 +1,6 @@
 # CBB Learn 🏀📚
 
-This is my attempt at creating a regression model that predicts college basketball scores.
+This is my attempt at creating a regression model that predicts college basketball scores (in order to lose my money as efficiently as possible).
 
 _Full disclosure: I'm not a data scientist._
 
