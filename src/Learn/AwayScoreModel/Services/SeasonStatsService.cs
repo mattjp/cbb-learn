@@ -45,6 +45,9 @@ namespace AwayScoreModel.ConsoleApp
                             !c.Name.StartsWith("avg")
                             && !c.Name.StartsWith("total")
                             && c.Name != "largestLead"
+                            && c.Name != "turnoverPoints"
+                            && c.Name != "pointsInPaint"
+                            && c.Name != "fastBreakPoints"
                             && c.Name != "fantasyRating"))
                         {
                             string k = string.Concat(s.Name[0].ToString().ToUpper(), s.Name.AsSpan(1));
@@ -54,7 +57,50 @@ namespace AwayScoreModel.ConsoleApp
                         }
                     }
 
-                    // Aggregate season stats not present in the API response?
+                    // Aggregate season stats not present in the API response.
+                    var stats = new List<GameStatsDocument>();
+
+                    using (var reader = new StreamReader("src/Data/stats_v2.csv"))
+                    using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
+                    {
+                        stats = csv.GetRecords<GameStatsDocument>().ToList();
+                    }
+
+                    // Turnover points
+                    float homeTurnoverPoints = stats
+                        .Where(doc => doc.Home.ToString() == teamId)
+                        .Aggregate(0F, (count, doc) => count + doc.HomeTurnoverPoints);
+                    float totalTurnoverPoints = stats
+                        .Where(doc => doc.Away.ToString() == teamId)
+                        .Aggregate(homeTurnoverPoints, (count, doc) => count + doc.AwayTurnoverPoints);
+                    statsDict.Add("TurnoverPoints", totalTurnoverPoints);
+
+                    // Points in paint
+                    float homePointsInPaint = stats
+                        .Where(doc => doc.Home.ToString() == teamId)
+                        .Aggregate(0F, (count, doc) => count + doc.HomePointsInPaint);
+                    float totalPointsInPaint = stats
+                        .Where(doc => doc.Away.ToString() == teamId)
+                        .Aggregate(homePointsInPaint, (count, doc) => count + doc.AwayPointsInPaint);
+                    statsDict.Add("PointsInPaint", totalPointsInPaint);
+
+                    // Fast break points
+                    float homeFastBreakPoints = stats
+                        .Where(doc => doc.Home.ToString() == teamId)
+                        .Aggregate(0F, (count, doc) => count + doc.HomeFastBreakPoints);
+                    float totalFastBreakPoints = stats
+                        .Where(doc => doc.Away.ToString() == teamId)
+                        .Aggregate(homeFastBreakPoints, (count, doc) => count + doc.AwayFastBreakPoints);
+                    statsDict.Add("FastBreakPoints", totalFastBreakPoints);
+
+                    // Largest lead
+                    float homeLargestLead = stats
+                        .Where(doc => doc.Home.ToString() == teamId)
+                        .Aggregate(0F, (count, doc) => count + doc.HomeLargestLead);
+                    float totalLargestLead = stats
+                        .Where(doc => doc.Away.ToString() == teamId)
+                        .Aggregate(homeLargestLead, (count, doc) => count + doc.AwayLargestLead);
+                    statsDict.Add("LargestLead", totalLargestLead);
 
                     string key = teamId == teamA ? "A" : "B";
                     result.Add(key, statsDict);
@@ -110,7 +156,7 @@ namespace AwayScoreModel.ConsoleApp
                 HomeThreePointFieldGoalsAttempted = homeStats["ThreePointFieldGoalsAttempted"] / homeGamesPlayed,
                 HomeThreePointFieldGoalsMade = homeStats["ThreePointFieldGoalsMade"] / homeGamesPlayed,
                 HomeTeamTurnovers = homeStats["TeamTurnovers"] / homeGamesPlayed,
-                HomePointsInPaint = 0F,
+                HomePointsInPaint = homeStats["PointsInPaint"] / homeGamesPlayed,
                 HomeFastBreakPoints = homeStats["FastBreakPoints"] / homeGamesPlayed,
                 HomeOffensiveReboundPct = homeStats["OffensiveReboundPct"],
                 HomeEstimatedPossessions = homeStats["EstimatedPossessions"] / homeGamesPlayed,
@@ -154,7 +200,7 @@ namespace AwayScoreModel.ConsoleApp
                 AwayThreePointFieldGoalsAttempted = awayStats["ThreePointFieldGoalsAttempted"] / awayGamesPlayed,
                 AwayThreePointFieldGoalsMade = awayStats["ThreePointFieldGoalsMade"] / awayGamesPlayed,
                 AwayTeamTurnovers = awayStats["TeamTurnovers"] / awayGamesPlayed,
-                AwayPointsInPaint = 0F,
+                AwayPointsInPaint = awayStats["PointsInPaint"] / awayGamesPlayed,
                 AwayFastBreakPoints = awayStats["FastBreakPoints"] / awayGamesPlayed,
                 AwayOffensiveReboundPct = awayStats["OffensiveReboundPct"],
                 AwayEstimatedPossessions = awayStats["EstimatedPossessions"] / awayGamesPlayed,

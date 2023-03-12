@@ -63,6 +63,7 @@ public class StatsDocument
             "homeTwoPointFieldGoalPct",
             "homeShootingEfficiency",
             "homeScoringEfficiency",
+            "homeLargestLead",
             "awayBlocks",
             "awayDefensiveRebounds",
             "awaySteals",
@@ -106,7 +107,8 @@ public class StatsDocument
             "awayTwoPointFieldGoalsAttempted",
             "awayTwoPointFieldGoalPct",
             "awayShootingEfficiency",
-            "awayScoringEfficiency"
+            "awayScoringEfficiency",
+            "awayLargestLead"
         };
     }
 

@@ -23,9 +23,12 @@ public class StatsService
         var gameDocs = new List<GameDocument>();
 
         // Expected column headers
-        using (var writer = new StreamWriter("src/Data/stats.csv"))
+        using (var writer = new StreamWriter("src/Data/stats_v2.csv"))
         using (var csv = new CsvWriter(writer, CultureInfo.InvariantCulture))
         {
+
+            csv.WriteField("home");
+            csv.WriteField("away");
 
             foreach (var col in StatsDocument.GetColumns())
             {
@@ -66,7 +69,7 @@ public class StatsService
                         foreach (var s in cat.Stats.Where(c =>
                             !c.Name.StartsWith("avg")
                             && !c.Name.StartsWith("total")
-                            && c.Name != "largestLead"
+                            // && c.Name != "largestLead"
                             && c.Name != "fantasyRating"))
                         {
                             string prefix = teamId == gameDoc.Home ? "home" : "away";
@@ -78,9 +81,9 @@ public class StatsService
                     }
                 }
 
-                using (var writer = new StreamWriter("src/Data/stats.csv", true))
+                using (var writer = new StreamWriter("src/Data/stats_v2.csv", true))
                 {
-                    var l = new List<double>();
+                    var l = new List<double> { Double.Parse(gameDoc.Home), Double.Parse(gameDoc.Away) };
                     foreach (var col in StatsDocument.GetColumns())
                     {
                         if (statsDoc.Stats.ContainsKey(col))

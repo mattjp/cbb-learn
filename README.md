@@ -2,7 +2,7 @@
 
 This is my attempt at creating a regression model that predicts college basketball scores.
 
-_Full disclosure: I'm not a data scientist, if that wasn't clear by looking at the code and results_ 🙃 _._
+_Full disclosure: I'm not a data scientist_ 🙃 _._
 
 ## Training data
 
@@ -43,4 +43,4 @@ dotnet run --project src/Learn/AwayScoreModel/AwayScoreModel.csproj -- <TEAM A I
 
 ## Results
 
-Will update after Selection Sunday.
+[Google Sheets](https://docs.google.com/spreadsheets/d/1W_2zyzDsF-n0RZU4AfV_KKFFXySbv2bHpy_dT78wg44/edit?usp=sharing)

@@ -33,6 +33,8 @@ namespace AwayScoreModel.ConsoleApp
 
             Console.WriteLine($"Predicting away points for both teams.\n");
 
+            // Console.WriteLine($"{JsonConvert.SerializeObject(modelInputA, Formatting.Indented)}");
+
             var predA = AwayScoreModel.Predict(modelInputA);
             var predB = AwayScoreModel.Predict(modelInputB);
 
@@ -40,7 +42,7 @@ namespace AwayScoreModel.ConsoleApp
             var scoreB = predB.Score;
             var scoreDiff = Math.Abs(scoreA - scoreB);
 
-            Console.WriteLine($"=> Points:\n    {teamA}: {Math.Round(scoreA)}\n    {teamB}: {Math.Round(scoreB)}\n");
+            Console.WriteLine($"=> Points:\n\t{teamA}: {Math.Round(scoreA)}\n\t{teamB}: {Math.Round(scoreB)}\n");
             Console.WriteLine($"=> Point difference: {scoreDiff}\n");
             Console.WriteLine($"=> Winner: {(scoreA > scoreB ? teamA : teamB)}\n");
             Console.WriteLine($"=> Spread: {Math.Round(scoreDiff * 2, MidpointRounding.AwayFromZero) / 2}\n");
