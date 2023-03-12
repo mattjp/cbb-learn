@@ -16,364 +16,380 @@ namespace AwayScoreModel.ConsoleApp
         public class ModelInput
         {
             [LoadColumn(0)]
+            [ColumnName(@"home")]
+            public float Home { get; set; }
+
+            [LoadColumn(1)]
+            [ColumnName(@"away")]
+            public float Away { get; set; }
+
+            [LoadColumn(2)]
             [ColumnName(@"homePoints")]
             public float HomePoints { get; set; }
 
-            [LoadColumn(1)]
+            [LoadColumn(3)]
             [ColumnName(@"awayPoints")]
             public float AwayPoints { get; set; }
 
-            [LoadColumn(2)]
+            [LoadColumn(4)]
             [ColumnName(@"homeBlocks")]
             public float HomeBlocks { get; set; }
 
-            [LoadColumn(3)]
+            [LoadColumn(5)]
             [ColumnName(@"homeDefensiveRebounds")]
             public float HomeDefensiveRebounds { get; set; }
 
-            [LoadColumn(4)]
+            [LoadColumn(6)]
             [ColumnName(@"homeSteals")]
             public float HomeSteals { get; set; }
 
-            [LoadColumn(5)]
+            [LoadColumn(7)]
             [ColumnName(@"homeTurnoverPoints")]
             public float HomeTurnoverPoints { get; set; }
 
-            [LoadColumn(6)]
+            [LoadColumn(8)]
             [ColumnName(@"homeDisqualifications")]
             public float HomeDisqualifications { get; set; }
 
-            [LoadColumn(7)]
+            [LoadColumn(9)]
             [ColumnName(@"homeFlagrantFouls")]
             public float HomeFlagrantFouls { get; set; }
 
-            [LoadColumn(8)]
+            [LoadColumn(10)]
             [ColumnName(@"homeFouls")]
             public float HomeFouls { get; set; }
 
-            [LoadColumn(9)]
+            [LoadColumn(11)]
             [ColumnName(@"homeEjections")]
             public float HomeEjections { get; set; }
 
-            [LoadColumn(10)]
+            [LoadColumn(12)]
             [ColumnName(@"homeTechnicalFouls")]
             public float HomeTechnicalFouls { get; set; }
 
-            [LoadColumn(11)]
+            [LoadColumn(13)]
             [ColumnName(@"homeRebounds")]
             public float HomeRebounds { get; set; }
 
-            [LoadColumn(12)]
+            [LoadColumn(14)]
             [ColumnName(@"homeAssistTurnoverRatio")]
             public float HomeAssistTurnoverRatio { get; set; }
 
-            [LoadColumn(13)]
+            [LoadColumn(15)]
             [ColumnName(@"homeStealFoulRatio")]
             public float HomeStealFoulRatio { get; set; }
 
-            [LoadColumn(14)]
+            [LoadColumn(16)]
             [ColumnName(@"homeBlockFoulRatio")]
             public float HomeBlockFoulRatio { get; set; }
 
-            [LoadColumn(15)]
+            [LoadColumn(17)]
             [ColumnName(@"homeTeamAssistTurnoverRatio")]
             public float HomeTeamAssistTurnoverRatio { get; set; }
 
-            [LoadColumn(16)]
+            [LoadColumn(18)]
             [ColumnName(@"homeStealTurnoverRatio")]
             public float HomeStealTurnoverRatio { get; set; }
 
-            [LoadColumn(17)]
+            [LoadColumn(19)]
             [ColumnName(@"homeGamesPlayed")]
             public float HomeGamesPlayed { get; set; }
 
-            [LoadColumn(18)]
+            [LoadColumn(20)]
             [ColumnName(@"homeGamesStarted")]
             public float HomeGamesStarted { get; set; }
 
-            [LoadColumn(19)]
+            [LoadColumn(21)]
             [ColumnName(@"homeDoubleDouble")]
             public float HomeDoubleDouble { get; set; }
 
-            [LoadColumn(20)]
+            [LoadColumn(22)]
             [ColumnName(@"homeTripleDouble")]
             public float HomeTripleDouble { get; set; }
 
-            [LoadColumn(21)]
+            [LoadColumn(23)]
             [ColumnName(@"homeAssists")]
             public float HomeAssists { get; set; }
 
-            [LoadColumn(22)]
+            [LoadColumn(24)]
             [ColumnName(@"homeFieldGoals")]
             public float HomeFieldGoals { get; set; }
 
-            [LoadColumn(23)]
+            [LoadColumn(25)]
             [ColumnName(@"homeFieldGoalsAttempted")]
             public float HomeFieldGoalsAttempted { get; set; }
 
-            [LoadColumn(24)]
+            [LoadColumn(26)]
             [ColumnName(@"homeFieldGoalsMade")]
             public float HomeFieldGoalsMade { get; set; }
 
-            [LoadColumn(25)]
+            [LoadColumn(27)]
             [ColumnName(@"homeFieldGoalPct")]
             public float HomeFieldGoalPct { get; set; }
 
-            [LoadColumn(26)]
+            [LoadColumn(28)]
             [ColumnName(@"homeFreeThrows")]
             public float HomeFreeThrows { get; set; }
 
-            [LoadColumn(27)]
+            [LoadColumn(29)]
             [ColumnName(@"homeFreeThrowPct")]
             public float HomeFreeThrowPct { get; set; }
 
-            [LoadColumn(28)]
+            [LoadColumn(30)]
             [ColumnName(@"homeFreeThrowsAttempted")]
             public float HomeFreeThrowsAttempted { get; set; }
 
-            [LoadColumn(29)]
+            [LoadColumn(31)]
             [ColumnName(@"homeFreeThrowsMade")]
             public float HomeFreeThrowsMade { get; set; }
 
-            [LoadColumn(30)]
+            [LoadColumn(32)]
             [ColumnName(@"homeOffensiveRebounds")]
             public float HomeOffensiveRebounds { get; set; }
 
-            [LoadColumn(31)]
+            [LoadColumn(33)]
             [ColumnName(@"homeTurnovers")]
             public float HomeTurnovers { get; set; }
 
-            [LoadColumn(32)]
+            [LoadColumn(34)]
             [ColumnName(@"homeThreePointFieldGoalsAttempted")]
             public float HomeThreePointFieldGoalsAttempted { get; set; }
 
-            [LoadColumn(33)]
+            [LoadColumn(35)]
             [ColumnName(@"homeThreePointFieldGoalsMade")]
             public float HomeThreePointFieldGoalsMade { get; set; }
 
-            [LoadColumn(34)]
+            [LoadColumn(36)]
             [ColumnName(@"homeTeamTurnovers")]
             public float HomeTeamTurnovers { get; set; }
 
-            [LoadColumn(35)]
+            [LoadColumn(37)]
             [ColumnName(@"homePointsInPaint")]
             public float HomePointsInPaint { get; set; }
 
-            [LoadColumn(36)]
+            [LoadColumn(38)]
             [ColumnName(@"homeFastBreakPoints")]
             public float HomeFastBreakPoints { get; set; }
 
-            [LoadColumn(37)]
+            [LoadColumn(39)]
             [ColumnName(@"homeOffensiveReboundPct")]
             public float HomeOffensiveReboundPct { get; set; }
 
-            [LoadColumn(38)]
+            [LoadColumn(40)]
             [ColumnName(@"homeEstimatedPossessions")]
             public float HomeEstimatedPossessions { get; set; }
 
-            [LoadColumn(39)]
+            [LoadColumn(41)]
             [ColumnName(@"homePointsPerEstimatedPossessions")]
             public float HomePointsPerEstimatedPossessions { get; set; }
 
-            [LoadColumn(40)]
+            [LoadColumn(42)]
             [ColumnName(@"homeThreePointFieldGoalPct")]
             public float HomeThreePointFieldGoalPct { get; set; }
 
-            [LoadColumn(41)]
+            [LoadColumn(43)]
             [ColumnName(@"homeTwoPointFieldGoalsMade")]
             public float HomeTwoPointFieldGoalsMade { get; set; }
 
-            [LoadColumn(42)]
+            [LoadColumn(44)]
             [ColumnName(@"homeTwoPointFieldGoalsAttempted")]
             public float HomeTwoPointFieldGoalsAttempted { get; set; }
 
-            [LoadColumn(43)]
+            [LoadColumn(45)]
             [ColumnName(@"homeTwoPointFieldGoalPct")]
             public float HomeTwoPointFieldGoalPct { get; set; }
 
-            [LoadColumn(44)]
+            [LoadColumn(46)]
             [ColumnName(@"homeShootingEfficiency")]
             public float HomeShootingEfficiency { get; set; }
 
-            [LoadColumn(45)]
+            [LoadColumn(47)]
             [ColumnName(@"homeScoringEfficiency")]
             public float HomeScoringEfficiency { get; set; }
 
-            [LoadColumn(46)]
+            [LoadColumn(48)]
+            [ColumnName(@"homeLargestLead")]
+            public float HomeLargestLead { get; set; }
+
+            [LoadColumn(49)]
             [ColumnName(@"awayBlocks")]
             public float AwayBlocks { get; set; }
 
-            [LoadColumn(47)]
+            [LoadColumn(50)]
             [ColumnName(@"awayDefensiveRebounds")]
             public float AwayDefensiveRebounds { get; set; }
 
-            [LoadColumn(48)]
+            [LoadColumn(51)]
             [ColumnName(@"awaySteals")]
             public float AwaySteals { get; set; }
 
-            [LoadColumn(49)]
+            [LoadColumn(52)]
             [ColumnName(@"awayTurnoverPoints")]
             public float AwayTurnoverPoints { get; set; }
 
-            [LoadColumn(50)]
+            [LoadColumn(53)]
             [ColumnName(@"awayDisqualifications")]
             public float AwayDisqualifications { get; set; }
 
-            [LoadColumn(51)]
+            [LoadColumn(54)]
             [ColumnName(@"awayFlagrantFouls")]
             public float AwayFlagrantFouls { get; set; }
 
-            [LoadColumn(52)]
+            [LoadColumn(55)]
             [ColumnName(@"awayFouls")]
             public float AwayFouls { get; set; }
 
-            [LoadColumn(53)]
+            [LoadColumn(56)]
             [ColumnName(@"awayEjections")]
             public float AwayEjections { get; set; }
 
-            [LoadColumn(54)]
+            [LoadColumn(57)]
             [ColumnName(@"awayTechnicalFouls")]
             public float AwayTechnicalFouls { get; set; }
 
-            [LoadColumn(55)]
+            [LoadColumn(58)]
             [ColumnName(@"awayRebounds")]
             public float AwayRebounds { get; set; }
 
-            [LoadColumn(56)]
+            [LoadColumn(59)]
             [ColumnName(@"awayAssistTurnoverRatio")]
             public float AwayAssistTurnoverRatio { get; set; }
 
-            [LoadColumn(57)]
+            [LoadColumn(60)]
             [ColumnName(@"awayStealFoulRatio")]
             public float AwayStealFoulRatio { get; set; }
 
-            [LoadColumn(58)]
+            [LoadColumn(61)]
             [ColumnName(@"awayBlockFoulRatio")]
             public float AwayBlockFoulRatio { get; set; }
 
-            [LoadColumn(59)]
+            [LoadColumn(62)]
             [ColumnName(@"awayTeamAssistTurnoverRatio")]
             public float AwayTeamAssistTurnoverRatio { get; set; }
 
-            [LoadColumn(60)]
+            [LoadColumn(63)]
             [ColumnName(@"awayStealTurnoverRatio")]
             public float AwayStealTurnoverRatio { get; set; }
 
-            [LoadColumn(61)]
+            [LoadColumn(64)]
             [ColumnName(@"awayGamesPlayed")]
             public float AwayGamesPlayed { get; set; }
 
-            [LoadColumn(62)]
+            [LoadColumn(65)]
             [ColumnName(@"awayGamesStarted")]
             public float AwayGamesStarted { get; set; }
 
-            [LoadColumn(63)]
+            [LoadColumn(66)]
             [ColumnName(@"awayDoubleDouble")]
             public float AwayDoubleDouble { get; set; }
 
-            [LoadColumn(64)]
+            [LoadColumn(67)]
             [ColumnName(@"awayTripleDouble")]
             public float AwayTripleDouble { get; set; }
 
-            [LoadColumn(65)]
+            [LoadColumn(68)]
             [ColumnName(@"awayAssists")]
             public float AwayAssists { get; set; }
 
-            [LoadColumn(66)]
+            [LoadColumn(69)]
             [ColumnName(@"awayFieldGoals")]
             public float AwayFieldGoals { get; set; }
 
-            [LoadColumn(67)]
+            [LoadColumn(70)]
             [ColumnName(@"awayFieldGoalsAttempted")]
             public float AwayFieldGoalsAttempted { get; set; }
 
-            [LoadColumn(68)]
+            [LoadColumn(71)]
             [ColumnName(@"awayFieldGoalsMade")]
             public float AwayFieldGoalsMade { get; set; }
 
-            [LoadColumn(69)]
+            [LoadColumn(72)]
             [ColumnName(@"awayFieldGoalPct")]
             public float AwayFieldGoalPct { get; set; }
 
-            [LoadColumn(70)]
+            [LoadColumn(73)]
             [ColumnName(@"awayFreeThrows")]
             public float AwayFreeThrows { get; set; }
 
-            [LoadColumn(71)]
+            [LoadColumn(74)]
             [ColumnName(@"awayFreeThrowPct")]
             public float AwayFreeThrowPct { get; set; }
 
-            [LoadColumn(72)]
+            [LoadColumn(75)]
             [ColumnName(@"awayFreeThrowsAttempted")]
             public float AwayFreeThrowsAttempted { get; set; }
 
-            [LoadColumn(73)]
+            [LoadColumn(76)]
             [ColumnName(@"awayFreeThrowsMade")]
             public float AwayFreeThrowsMade { get; set; }
 
-            [LoadColumn(74)]
+            [LoadColumn(77)]
             [ColumnName(@"awayOffensiveRebounds")]
             public float AwayOffensiveRebounds { get; set; }
 
-            [LoadColumn(75)]
+            [LoadColumn(78)]
             [ColumnName(@"awayTurnovers")]
             public float AwayTurnovers { get; set; }
 
-            [LoadColumn(76)]
+            [LoadColumn(79)]
             [ColumnName(@"awayThreePointFieldGoalsAttempted")]
             public float AwayThreePointFieldGoalsAttempted { get; set; }
 
-            [LoadColumn(77)]
+            [LoadColumn(80)]
             [ColumnName(@"awayThreePointFieldGoalsMade")]
             public float AwayThreePointFieldGoalsMade { get; set; }
 
-            [LoadColumn(78)]
+            [LoadColumn(81)]
             [ColumnName(@"awayTeamTurnovers")]
             public float AwayTeamTurnovers { get; set; }
 
-            [LoadColumn(79)]
+            [LoadColumn(82)]
             [ColumnName(@"awayPointsInPaint")]
             public float AwayPointsInPaint { get; set; }
 
-            [LoadColumn(80)]
+            [LoadColumn(83)]
             [ColumnName(@"awayFastBreakPoints")]
             public float AwayFastBreakPoints { get; set; }
 
-            [LoadColumn(81)]
+            [LoadColumn(84)]
             [ColumnName(@"awayOffensiveReboundPct")]
             public float AwayOffensiveReboundPct { get; set; }
 
-            [LoadColumn(82)]
+            [LoadColumn(85)]
             [ColumnName(@"awayEstimatedPossessions")]
             public float AwayEstimatedPossessions { get; set; }
 
-            [LoadColumn(83)]
+            [LoadColumn(86)]
             [ColumnName(@"awayPointsPerEstimatedPossessions")]
             public float AwayPointsPerEstimatedPossessions { get; set; }
 
-            [LoadColumn(84)]
+            [LoadColumn(87)]
             [ColumnName(@"awayThreePointFieldGoalPct")]
             public float AwayThreePointFieldGoalPct { get; set; }
 
-            [LoadColumn(85)]
+            [LoadColumn(88)]
             [ColumnName(@"awayTwoPointFieldGoalsMade")]
             public float AwayTwoPointFieldGoalsMade { get; set; }
 
-            [LoadColumn(86)]
+            [LoadColumn(89)]
             [ColumnName(@"awayTwoPointFieldGoalsAttempted")]
             public float AwayTwoPointFieldGoalsAttempted { get; set; }
 
-            [LoadColumn(87)]
+            [LoadColumn(90)]
             [ColumnName(@"awayTwoPointFieldGoalPct")]
             public float AwayTwoPointFieldGoalPct { get; set; }
 
-            [LoadColumn(88)]
+            [LoadColumn(91)]
             [ColumnName(@"awayShootingEfficiency")]
             public float AwayShootingEfficiency { get; set; }
 
-            [LoadColumn(89)]
+            [LoadColumn(92)]
             [ColumnName(@"awayScoringEfficiency")]
             public float AwayScoringEfficiency { get; set; }
+
+            [LoadColumn(93)]
+            [ColumnName(@"awayLargestLead")]
+            public float AwayLargestLead { get; set; }
 
         }
 
@@ -385,6 +401,12 @@ namespace AwayScoreModel.ConsoleApp
         #region model output class
         public class ModelOutput
         {
+            [ColumnName(@"home")]
+            public float Home { get; set; }
+
+            [ColumnName(@"away")]
+            public float Away { get; set; }
+
             [ColumnName(@"homePoints")]
             public float HomePoints { get; set; }
 
@@ -523,6 +545,9 @@ namespace AwayScoreModel.ConsoleApp
             [ColumnName(@"homeScoringEfficiency")]
             public float HomeScoringEfficiency { get; set; }
 
+            [ColumnName(@"homeLargestLead")]
+            public float HomeLargestLead { get; set; }
+
             [ColumnName(@"awayBlocks")]
             public float AwayBlocks { get; set; }
 
@@ -654,6 +679,9 @@ namespace AwayScoreModel.ConsoleApp
 
             [ColumnName(@"awayScoringEfficiency")]
             public float AwayScoringEfficiency { get; set; }
+
+            [ColumnName(@"awayLargestLead")]
+            public float AwayLargestLead { get; set; }
 
             [ColumnName(@"Features")]
             public float[] Features { get; set; }
