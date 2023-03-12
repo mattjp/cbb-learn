@@ -167,6 +167,7 @@ namespace AwayScoreModel.ConsoleApp
                 HomeTwoPointFieldGoalPct = homeStats["TwoPointFieldGoalPct"],
                 HomeShootingEfficiency = homeStats["ShootingEfficiency"],
                 HomeScoringEfficiency = homeStats["ScoringEfficiency"],
+                HomeLargestLead = homeStats["LargestLead"] / homeGamesPlayed,
                 AwayBlocks = awayStats["Blocks"] / awayGamesPlayed,
                 AwayDefensiveRebounds = awayStats["DefensiveRebounds"] / awayGamesPlayed,
                 AwaySteals = awayStats["Steals"] / awayGamesPlayed,
@@ -211,6 +212,7 @@ namespace AwayScoreModel.ConsoleApp
                 AwayTwoPointFieldGoalPct = awayStats["TwoPointFieldGoalPct"],
                 AwayShootingEfficiency = awayStats["ShootingEfficiency"],
                 AwayScoringEfficiency = awayStats["ScoringEfficiency"],
+                AwayLargestLead = awayStats["LargestLead"] / awayGamesPlayed
             };
         }
     }
