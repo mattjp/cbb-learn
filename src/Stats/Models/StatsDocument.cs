@@ -116,7 +116,4 @@ public class StatsDocument
         Home = home;
         Away = away;
     }
-
-
 }
-

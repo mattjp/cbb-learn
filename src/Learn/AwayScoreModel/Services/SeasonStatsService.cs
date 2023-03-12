@@ -15,6 +15,7 @@ namespace AwayScoreModel.ConsoleApp
     public class SeasonStatsService
     {
         private static readonly HttpClient client = new HttpClient();
+        private const float HomePointsAdvantage = 1.85F;
 
         public SeasonStatsService() { }
 
@@ -53,6 +54,8 @@ namespace AwayScoreModel.ConsoleApp
                         }
                     }
 
+                    // Aggregate season stats not present in the API response?
+
                     string key = teamId == teamA ? "A" : "B";
                     result.Add(key, statsDict);
                 }
@@ -73,7 +76,7 @@ namespace AwayScoreModel.ConsoleApp
 
             return new AwayScoreModel.ModelInput()
             {
-                HomePoints = 0F,
+                HomePoints = (homeStats["Points"] / homeGamesPlayed) + HomePointsAdvantage,
                 HomeBlocks = homeStats["Blocks"] / homeGamesPlayed,
                 HomeDefensiveRebounds = homeStats["DefensiveRebounds"] / homeGamesPlayed,
                 HomeSteals = homeStats["Steals"] / homeGamesPlayed,
