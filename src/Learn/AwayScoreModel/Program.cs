@@ -44,6 +44,7 @@ namespace AwayScoreModel.ConsoleApp
 
             Console.WriteLine($"=> Points:\n\t{teamA}: {Math.Round(scoreA)}\n\t{teamB}: {Math.Round(scoreB)}\n");
             Console.WriteLine($"=> Point difference: {scoreDiff}\n");
+            Console.WriteLine($"=> Point total: {Math.Round(scoreA + scoreB)}\n");
             Console.WriteLine($"=> Winner: {(scoreA > scoreB ? teamA : teamB)}\n");
             Console.WriteLine($"=> Spread: {Math.Round(scoreDiff * 2, MidpointRounding.AwayFromZero) / 2}\n");
             Console.WriteLine("=============== End of process ===============");

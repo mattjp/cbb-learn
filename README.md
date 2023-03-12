@@ -2,7 +2,7 @@
 
 This is my attempt at creating a regression model that predicts college basketball scores.
 
-_Full disclosure: I'm not a data scientist_ 🙃 _._
+_Full disclosure: I'm not a data scientist._
 
 ## Training data
 
